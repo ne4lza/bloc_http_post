@@ -1,4 +1,4 @@
-import 'package:bloc_http_post/bloc/internet_bloc/cubit/internet_cubit.dart';
+import 'package:bloc_http_post/bloc/internet_bloc/cubit/WifiCubit/wifi_cubit.dart';
 import 'package:bloc_http_post/bloc/transaction_bloc/transaction_bloc.dart';
 import 'package:bloc_http_post/pages/home.dart';
 import 'package:bloc_http_post/repository/transaction_repo.dart';

@@ -1,6 +1,11 @@
 part of 'ethernet_cubit.dart';
 
-@immutable
-sealed class EthernetState {}
+enum EthernetConnectivityStatus {
+  ethernetConnected,
+  ethernetDissconnected,
+}
 
-final class EthernetInitial extends EthernetState {}
+class EthernetStatus {
+  final EthernetConnectivityStatus status;
+  const EthernetStatus(this.status);
+}

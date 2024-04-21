@@ -1,6 +1,11 @@
 part of 'mobile_cubit.dart';
 
-@immutable
-sealed class MobileState {}
+enum MobileConnectivityStatus {
+  mobileConnected,
+  mobileDissconnected,
+}
 
-final class MobileInitial extends MobileState {}
+class MobileStatus {
+  final MobileConnectivityStatus status;
+  const MobileStatus(this.status);
+}

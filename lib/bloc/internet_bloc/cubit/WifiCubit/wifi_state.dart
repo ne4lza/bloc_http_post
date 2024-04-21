@@ -1,15 +1,11 @@
-part of 'internet_cubit.dart';
+part of 'wifi_cubit.dart';
 
-enum ConnectivityStatus {
-   connected, 
-   disconnected ,
+enum WifiConnectivityStatus {
    wifiConnected,
    wifiDissconnected,
-   mobileConnected,
-   mobileDisconnected,
    }
 
-class InternetStatus {
-  final ConnectivityStatus status;
-  const InternetStatus(this.status);
+class WifiStatus {
+  final WifiConnectivityStatus status;
+  const WifiStatus(this.status);
 }

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nfc_manager/nfc_manager.dart';
 import '../bloc/transaction_bloc/transaction_bloc.dart';
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -49,10 +50,10 @@ class Home extends StatelessWidget {
                 children: [
                 Text(
                   "LÜTFEN KARTINIZI OKUTUNUZ",
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.titleMedium,
                   ),
                 IconButton(
-                  onPressed: () => BlocProvider.of<TransactionBloc>(context).add(SendTransaction()),
+                  onPressed: () => _startNFCReading(),
                   icon: const Icon(Icons.send),
                 ),
                 ],
@@ -68,6 +69,25 @@ class Home extends StatelessWidget {
       
     );
   }
+  void _startNFCReading() async {
+    try {
+      bool isAvailable = await NfcManager.instance.isAvailable();
 
+      //We first check if NFC is available on the device.
+      if (isAvailable) {
+            //If NFC is available, start an NFC session and listen for NFC tags to be discovered.
+            NfcManager.instance.startSession(
+            onDiscovered: (NfcTag tag) async {
+            // Process NFC tag, When an NFC tag is discovered, print its data to the console.
+            debugPrint('NFC Tag Detected: ${tag.data}');
+          },
+        );
+      } else {
+        debugPrint('NFC not available.');
+      }
+    } catch (e) {
+      debugPrint('Error reading NFC: $e');
+    }
+  }
   
 }
