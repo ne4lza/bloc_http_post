@@ -19,13 +19,7 @@ class InternetCubit extends Cubit<InternetStatus> {
     if(result != ConnectivityResult.wifi){
       emit(const InternetStatus(ConnectivityStatus.wifiDissconnected));
     }
-
-    if (result == ConnectivityResult.mobile) {
-      emit(const InternetStatus(ConnectivityStatus.mobileConnected));
-    }
-    if(result != ConnectivityResult.mobile){
-      emit(const InternetStatus(ConnectivityStatus.mobileDisconnected));
-    }
+    
 
     
   }
